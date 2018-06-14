@@ -1,0 +1,405 @@
+<?xml version="1.0"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://localhost/uup-soap/employees.php" xmlns:soap-env="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://localhost/uup-soap/employees.php">
+  <wsdl:types>
+    <xsd:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://localhost/uup-soap/employees.php">
+      <xsd:complexType name="EmployeeList">
+        <xsd:all>
+          <xsd:element name="_employees" type="tns:Employee"/>
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Employee">
+        <xsd:all>
+          <xsd:element name="name" type="xsd:string"/>
+          <xsd:element name="company" type="tns:Company"/>
+          <xsd:element name="job" type="tns:Job"/>
+          <xsd:element name="boss" type="xsd:string"/>
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Company">
+        <xsd:all>
+          <xsd:element name="name" type="xsd:string"/>
+          <xsd:element name="address" type="xsd:string"/>
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Job">
+        <xsd:all>
+          <xsd:element name="title" type="xsd:string"/>
+          <xsd:element name="salary" type="xsd:int"/>
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:element name="dumpEmployees" type="tns:dumpEmployees"/>
+      <xsd:complexType name="dumpEmployees">
+        <xsd:sequence/>
+      </xsd:complexType>
+      <xsd:element name="dumpEmployeesResponse" type="tns:dumpEmployeesResponse"/>
+      <xsd:complexType name="dumpEmployeesResponse">
+        <xsd:sequence>
+          <xsd:element name="return" type="tns:EmployeeList" maxOccurs="1"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="getIdentities" type="tns:getIdentities"/>
+      <xsd:complexType name="getIdentities">
+        <xsd:sequence/>
+      </xsd:complexType>
+      <xsd:element name="getIdentitiesResponse" type="tns:getIdentitiesResponse"/>
+      <xsd:complexType name="getIdentitiesResponse">
+        <xsd:sequence>
+          <xsd:element name="return" type="xsd:string" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="lookupEmployee" type="tns:lookupEmployee"/>
+      <xsd:complexType name="lookupEmployee">
+        <xsd:sequence>
+          <xsd:element name="user" type="xsd:string" maxOccurs="1"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="lookupEmployeeResponse" type="tns:lookupEmployeeResponse"/>
+      <xsd:complexType name="lookupEmployeeResponse">
+        <xsd:sequence>
+          <xsd:element name="return" type="tns:Employee" maxOccurs="1"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="findEmployee" type="tns:findEmployee"/>
+      <xsd:complexType name="findEmployee">
+        <xsd:sequence>
+          <xsd:element name="name" type="xsd:string" maxOccurs="1"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="findEmployeeResponse" type="tns:findEmployeeResponse"/>
+      <xsd:complexType name="findEmployeeResponse">
+        <xsd:sequence>
+          <xsd:element name="return" type="tns:Employee" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="getCompany" type="tns:getCompany"/>
+      <xsd:complexType name="getCompany">
+        <xsd:sequence>
+          <xsd:element name="user" type="xsd:string" maxOccurs="1"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="getCompanyResponse" type="tns:getCompanyResponse"/>
+      <xsd:complexType name="getCompanyResponse">
+        <xsd:sequence>
+          <xsd:element name="return" type="tns:Company" maxOccurs="1"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="getJob" type="tns:getJob"/>
+      <xsd:complexType name="getJob">
+        <xsd:sequence>
+          <xsd:element name="user" type="xsd:string" maxOccurs="1"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="getJobResponse" type="tns:getJobResponse"/>
+      <xsd:complexType name="getJobResponse">
+        <xsd:sequence>
+          <xsd:element name="return" type="tns:Job" maxOccurs="1"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="getBoss" type="tns:getBoss"/>
+      <xsd:complexType name="getBoss">
+        <xsd:sequence>
+          <xsd:element name="user" type="xsd:string" maxOccurs="1"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="getBossResponse" type="tns:getBossResponse"/>
+      <xsd:complexType name="getBossResponse">
+        <xsd:sequence>
+          <xsd:element name="return" type="tns:Employee" maxOccurs="1"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="addEmployee" type="tns:addEmployee"/>
+      <xsd:complexType name="addEmployee">
+        <xsd:sequence>
+          <xsd:element name="user" type="xsd:string" maxOccurs="1"/>
+          <xsd:element name="employee" type="tns:Employee" maxOccurs="1"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="addEmployeeResponse" type="tns:addEmployeeResponse"/>
+      <xsd:complexType name="addEmployeeResponse">
+        <xsd:sequence/>
+      </xsd:complexType>
+      <xsd:element name="updateEmployee" type="tns:updateEmployee"/>
+      <xsd:complexType name="updateEmployee">
+        <xsd:sequence>
+          <xsd:element name="user" type="xsd:string" maxOccurs="1"/>
+          <xsd:element name="employee" type="tns:Employee" maxOccurs="1"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="updateEmployeeResponse" type="tns:updateEmployeeResponse"/>
+      <xsd:complexType name="updateEmployeeResponse">
+        <xsd:sequence/>
+      </xsd:complexType>
+      <xsd:element name="deleteEmployee" type="tns:deleteEmployee"/>
+      <xsd:complexType name="deleteEmployee">
+        <xsd:sequence>
+          <xsd:element name="user" type="xsd:string" maxOccurs="1"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="deleteEmployeeResponse" type="tns:deleteEmployeeResponse"/>
+      <xsd:complexType name="deleteEmployeeResponse">
+        <xsd:sequence/>
+      </xsd:complexType>
+      <xsd:element name="hasEmployee" type="tns:hasEmployee"/>
+      <xsd:complexType name="hasEmployee">
+        <xsd:sequence>
+          <xsd:element name="user" type="xsd:string" maxOccurs="1"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="hasEmployeeResponse" type="tns:hasEmployeeResponse"/>
+      <xsd:complexType name="hasEmployeeResponse">
+        <xsd:sequence>
+          <xsd:element name="return" type="xsd:boolean" maxOccurs="1"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="dumpEmployees">
+    <wsdl:part element="tns:dumpEmployees" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="getIdentities">
+    <wsdl:part element="tns:getIdentities" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="lookupEmployee">
+    <wsdl:part element="tns:lookupEmployee" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="findEmployee">
+    <wsdl:part element="tns:findEmployee" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="getCompany">
+    <wsdl:part element="tns:getCompany" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="getJob">
+    <wsdl:part element="tns:getJob" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="getBoss">
+    <wsdl:part element="tns:getBoss" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="addEmployee">
+    <wsdl:part element="tns:addEmployee" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="updateEmployee">
+    <wsdl:part element="tns:updateEmployee" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="deleteEmployee">
+    <wsdl:part element="tns:deleteEmployee" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="hasEmployee">
+    <wsdl:part element="tns:hasEmployee" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="dumpEmployeesResponse">
+    <wsdl:part element="tns:dumpEmployeesResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="getIdentitiesResponse">
+    <wsdl:part element="tns:getIdentitiesResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="lookupEmployeeResponse">
+    <wsdl:part element="tns:lookupEmployeeResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="findEmployeeResponse">
+    <wsdl:part element="tns:findEmployeeResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="getCompanyResponse">
+    <wsdl:part element="tns:getCompanyResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="getJobResponse">
+    <wsdl:part element="tns:getJobResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="getBossResponse">
+    <wsdl:part element="tns:getBossResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="addEmployeeResponse">
+    <wsdl:part element="tns:addEmployeeResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="updateEmployeeResponse">
+    <wsdl:part element="tns:updateEmployeeResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="deleteEmployeeResponse">
+    <wsdl:part element="tns:deleteEmployeeResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="hasEmployeeResponse">
+    <wsdl:part element="tns:hasEmployeeResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="EmployeesPortType">
+    <wsdl:operation name="dumpEmployees">
+      <wsdl:documentation>
+	Get all employees.
+	@return EmployeeList </wsdl:documentation>
+      <wsdl:input message="tns:dumpEmployees" name="dumpEmployees"/>
+      <wsdl:output message="tns:dumpEmployeesResponse" name="dumpEmployeesResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getIdentities">
+      <wsdl:documentation>
+	Get all user identities.
+	@return string </wsdl:documentation>
+      <wsdl:input message="tns:getIdentities" name="getIdentities"/>
+      <wsdl:output message="tns:getIdentitiesResponse" name="getIdentitiesResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="lookupEmployee">
+      <wsdl:documentation>
+	Get employee record.
+	@param string The user identity. [name=user]
+	@return Employee </wsdl:documentation>
+      <wsdl:input message="tns:lookupEmployee" name="lookupEmployee"/>
+      <wsdl:output message="tns:lookupEmployeeResponse" name="lookupEmployeeResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="findEmployee">
+      <wsdl:documentation>
+	Get employee records.
+	@param string The employee name. [name=name]
+	@return Employee </wsdl:documentation>
+      <wsdl:input message="tns:findEmployee" name="findEmployee"/>
+      <wsdl:output message="tns:findEmployeeResponse" name="findEmployeeResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getCompany">
+      <wsdl:documentation>
+	Get company of this employee.
+	@param string The user identity. [name=user]
+	@return Company </wsdl:documentation>
+      <wsdl:input message="tns:getCompany" name="getCompany"/>
+      <wsdl:output message="tns:getCompanyResponse" name="getCompanyResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getJob">
+      <wsdl:documentation>
+	Get job of this employee.
+	@param string The user identity. [name=user]
+	@return Job </wsdl:documentation>
+      <wsdl:input message="tns:getJob" name="getJob"/>
+      <wsdl:output message="tns:getJobResponse" name="getJobResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getBoss">
+      <wsdl:documentation>
+	Get user boss.
+	@param string The user identity. [name=user]
+	@return Employee </wsdl:documentation>
+      <wsdl:input message="tns:getBoss" name="getBoss"/>
+      <wsdl:output message="tns:getBossResponse" name="getBossResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="addEmployee">
+      <wsdl:documentation>
+	Add employee record.
+	@param string The user identity. [name=user]
+	@param Employee The employee record. [name=employee]</wsdl:documentation>
+      <wsdl:input message="tns:addEmployee" name="addEmployee"/>
+      <wsdl:output message="tns:addEmployeeResponse" name="addEmployeeResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="updateEmployee">
+      <wsdl:documentation>
+	Update employee record.
+	@param string The user identity. [name=user]
+	@param Employee The employee record. [name=employee]</wsdl:documentation>
+      <wsdl:input message="tns:updateEmployee" name="updateEmployee"/>
+      <wsdl:output message="tns:updateEmployeeResponse" name="updateEmployeeResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="deleteEmployee">
+      <wsdl:documentation>
+	Delete employee record.
+	@param string The user identity. [name=user]</wsdl:documentation>
+      <wsdl:input message="tns:deleteEmployee" name="deleteEmployee"/>
+      <wsdl:output message="tns:deleteEmployeeResponse" name="deleteEmployeeResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="hasEmployee">
+      <wsdl:documentation>
+	Check if employee exists.
+	@param string The user identity. [name=user]
+	@return boolean </wsdl:documentation>
+      <wsdl:input message="tns:hasEmployee" name="hasEmployee"/>
+      <wsdl:output message="tns:hasEmployeeResponse" name="hasEmployeeResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EmployeesBinding" type="tns:EmployeesPortType">
+    <soap-env:binding xmlns="http://schemas.xmlsoap.org/wsdl/soap/" style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/" name="dumpEmployees">
+      <wsdl:input xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/" name="getIdentities">
+      <wsdl:input xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/" name="lookupEmployee">
+      <wsdl:input xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/" name="findEmployee">
+      <wsdl:input xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/" name="getCompany">
+      <wsdl:input xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/" name="getJob">
+      <wsdl:input xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/" name="getBoss">
+      <wsdl:input xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/" name="addEmployee">
+      <wsdl:input xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/" name="updateEmployee">
+      <wsdl:input xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/" name="deleteEmployee">
+      <wsdl:input xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/" name="hasEmployee">
+      <wsdl:input xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/">
+        <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EmployeesService">
+    <wsdl:port xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/" name="EmployeesPort" binding="tns:EmployeesBinding">
+      <soap-env:address xmlns="http://schemas.xmlsoap.org/wsdl/soap/" location="http://localhost/uup-soap/employees.php"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

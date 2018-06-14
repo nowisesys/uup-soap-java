@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://localhost/uup-soap/calculator.php?wsdl" uri="xml-resources/web-service-references/calculator/wsdl/localhost/uup-soap/calculator.php.wsdl"/>
+    <system systemId="http://localhost/uup-soap/employees.php?wsdl" uri="xml-resources/web-service-references/employees/wsdl/localhost/uup-soap/employees.php.wsdl"/>
+</catalog>
