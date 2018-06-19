@@ -2,11 +2,6 @@
 <wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://localhost/uup-soap/employees.php" xmlns:soap-env="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://localhost/uup-soap/employees.php">
   <wsdl:types>
     <xsd:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://localhost/uup-soap/employees.php">
-      <xsd:complexType name="EmployeeList">
-        <xsd:all>
-          <xsd:element name="_employees" type="tns:Employee"/>
-        </xsd:all>
-      </xsd:complexType>
       <xsd:complexType name="Employee">
         <xsd:all>
           <xsd:element name="name" type="xsd:string"/>
@@ -34,7 +29,7 @@
       <xsd:element name="dumpEmployeesResponse" type="tns:dumpEmployeesResponse"/>
       <xsd:complexType name="dumpEmployeesResponse">
         <xsd:sequence>
-          <xsd:element name="return" type="tns:EmployeeList" maxOccurs="1"/>
+          <xsd:element name="return" type="tns:Employee" maxOccurs="unbounded"/>
         </xsd:sequence>
       </xsd:complexType>
       <xsd:element name="getIdentities" type="tns:getIdentities"/>
@@ -223,7 +218,7 @@
     <wsdl:operation name="dumpEmployees">
       <wsdl:documentation>
 	Get all employees.
-	@return EmployeeList </wsdl:documentation>
+	@return Employee </wsdl:documentation>
       <wsdl:input message="tns:dumpEmployees" name="dumpEmployees"/>
       <wsdl:output message="tns:dumpEmployeesResponse" name="dumpEmployeesResponse"/>
     </wsdl:operation>
