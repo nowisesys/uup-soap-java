@@ -101,9 +101,10 @@ public class Employees {
 
         try {
             System.out.println("+++ Dump all employees:");
-            EmployeeList result;
+            List<Employee> result;
 
             result = proxy.dumpEmployees();
+            System.out.println("Employees (dump->employees): " + result);
         } catch (Exception exception) {
             System.err.println(exception.getMessage());
         }
@@ -149,7 +150,7 @@ public class Employees {
 
             employee = proxy.lookupEmployee("anders");
             System.out.println("Employees (lookup->employee): " + Serialize.ToString(employee));
-            
+
             boolean exists = proxy.hasEmployee("anders");
             System.out.println("Employees (has->employee): " + exists);
         } catch (Exception exception) {
